@@ -28,7 +28,7 @@ class aws_sns extends SlackServicePlugin {
 			}
 		}
 
-		$this->icfg['topics'] = '';
+		$this->icfg['topics'] = array();
 		$this->icfg['botname'] = 'AWS Simple Notification Service';
 		$this->icfg['icon_emoji'] = '';
 		$this->icfg['icon_url'] = trim($GLOBALS['cfg']['root_url'], '/') . '/plugins/aws_sns/icon_48.png';

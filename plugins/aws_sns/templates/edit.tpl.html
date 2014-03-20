@@ -1,33 +1,43 @@
+{include file="aws_sns_style.tpl.css"}
+
 <form action="{$this->getEditUrl()}&save=1" method="post">
-	<p>
-		<label for="channel">Channel to post to:</label>
-		<select name="channel">
-		{foreach from=$channels key='chan_id' item='chan_name'}
-			<option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
-		{/foreach}
-		</select>
-	</p>
-
-	<p>
-		<label for="topics">Topics:</label>
-			<textarea type="text" name="topics" rows="6" cols="50">{foreach from=$this->icfg.topics item=topic}{$topic|escape}
-{/foreach}</textarea>
-	</p>
-
-	<p>
-		<label for="botname">Bot name:</label>
-		<input type="text" name="botname" value="{$this->icfg.botname|escape}" />
-	</p>
-
-	<p>
-		<label for="icon_emoji">Bot Emoji:</label>
-		<input type="text" name="icon_emoji" value="{$this->icfg.icon_emoji|escape}" />
-	</p>
-
-	<p>
-		<label for="icon_emoji">Bot Url:</label>
-		<input type="text" name="icon_url" value="{$this->icfg.icon_url|escape}" />
-	</p>
-
-	<p><input type="submit" value="Save Changes" class="btn" /></p>
+	<table>
+		<tr>
+			<th><label for="channel">Channel to post to:</label></th>
+			<td>
+				<select name="channel">
+				{foreach from=$channels key='chan_id' item='chan_name'}
+					<option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+				{/foreach}
+				</select>				
+			</td>		
+		</tr>
+		<tr>
+			<th><label for="topics">Topics:</label></th>
+			<td>
+				<textarea type="text" name="topics" rows="6" cols="50">{foreach from=$this->icfg.topics item=topic}{$topic|escape}
+{/foreach}</textarea><br />
+				<span class="field-description">A newline separated list of SNS topics to accept subscriptions from and forward messages to Slack. Topics in the list are matched as a case-sensitive regular expression.</span>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="botname">Bot name:</label></th>
+			<td><input type="text" name="botname" value="{$this->icfg.botname|escape}" /></td>
+		</tr>
+		<tr>
+			<th><label for="icon_emoji">Bot Emoji:</label></th>
+			<td><input type="text" name="icon_emoji" value="{$this->icfg.icon_emoji|escape}" /></td>
+		</tr>
+		<tr>
+			<th><label for="icon_emoji">Bot Url:</label></th>
+			<td>
+				<input type="text" name="icon_url" value="{$this->icfg.icon_url|escape}" /><br />
+				<span class="field-description">Value will overwrite the bot emoji from above.</span>
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" value="Save Changes" class="btn" /></td>
+		</tr>
+	</table>
 </form>

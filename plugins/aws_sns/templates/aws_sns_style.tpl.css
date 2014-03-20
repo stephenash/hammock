@@ -1,0 +1,21 @@
+<style>
+{literal}
+table td, table th { 
+	padding: 5px;
+	vertical-align: top;
+}
+
+table th {
+	text-align: right;
+}
+
+table td input[type=text] {
+	width: 350px;
+}
+
+.field-description {
+	font-size: 0.8em;
+	font-style: italic;
+}
+{/literal}
+</style>

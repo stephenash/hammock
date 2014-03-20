@@ -1,23 +1,40 @@
+{include file="aws_sns_style.tpl.css"}
+
 {if $smarty.get.newtoken}
 	<p class="alert">Your token has been updated - the webhook URL has changed!</p>
 {/if}
 
-<p>Go to your repo's settings page and add this hook URL:</p>
+<p>Go to SNS topic's settings page and add this hook URL as a subscription:</p>
 
 <p><code>{$this->getHookUrl()}</code></p>
 
-<p><b>Post to channel:</b> {$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</p>
-<p><b>Topics:</b>
-	<ul>
-	{foreach from=$this->icfg.topics item=topic}
-	    <li>{$topic|escape}</li>
-	{/foreach}
-	</ul>
-</p>
-<p><b>Bot Name:</b> {$this->icfg.botname|escape}</p>
-
-<p><b>Bot Emoji:</b> {$this->icfg.icon_emoji|escape}</p>
-
-<p><b>Bot Icon:</b> <img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></p>
+<table>
+	<tr>
+		<th align="right">Post to channel:</th>
+		<td>{$this->icfg.channel|escape} / {$this->icfg.channel_name|escape}</td>		
+	</tr>
+	<tr>
+		<th align="right">Topics:</th>
+		<td>
+			<ul>
+			{foreach from=$this->icfg.topics item=topic}
+			    <li>{$topic|escape}</li>
+			{/foreach}
+			</ul>			
+		</td>
+	</tr>
+	<tr>
+		<th align="right">Bot Name:</th>
+		<td>{$this->icfg.botname|escape}</td>
+	</tr>
+	<tr>
+		<th align="right">Bot Emoji:</th>
+		<td>{$this->icfg.icon_emoji|escape}</td>
+	</tr>
+	<tr>
+		<th align="right">Bot Icon:</th>
+		<td><img src="{$this->icfg.icon_url}" height="48" width="48" alt="bot icon"></td>
+	</tr>
+</table>
 
 <p><a href="{$this->getEditUrl()}" class="btn">Edit settings</a></p>
