@@ -1,0 +1,33 @@
+<form action="{$this->getEditUrl()}&save=1" method="post">
+	<p>
+		<label for="channel">Channel to post to:</label>
+		<select name="channel">
+		{foreach from=$channels key='chan_id' item='chan_name'}
+			<option value="{$chan_id|escape}"{if $chan_id==$this->icfg.channel} selected{/if}>{$chan_name|escape}</option>
+		{/foreach}
+		</select>
+	</p>
+
+	<p>
+		<label for="topics">Topics:</label>
+			<textarea type="text" name="topics" rows="6" cols="50">{foreach from=$this->icfg.topics item=topic}{$topic|escape}
+{/foreach}</textarea>
+	</p>
+
+	<p>
+		<label for="botname">Bot name:</label>
+		<input type="text" name="botname" value="{$this->icfg.botname|escape}" />
+	</p>
+
+	<p>
+		<label for="icon_emoji">Bot Emoji:</label>
+		<input type="text" name="icon_emoji" value="{$this->icfg.icon_emoji|escape}" />
+	</p>
+
+	<p>
+		<label for="icon_emoji">Bot Url:</label>
+		<input type="text" name="icon_url" value="{$this->icfg.icon_url|escape}" />
+	</p>
+
+	<p><input type="submit" value="Save Changes" class="btn" /></p>
+</form>
